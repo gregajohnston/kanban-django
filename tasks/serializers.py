@@ -10,9 +10,12 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    tasks = serializers.PrimaryKeyRelatedField(
+            many=True, queryset=Task.objects.all())
+
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'groups')
+        fields = ('id', 'username', 'tasks', 'groups')
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
