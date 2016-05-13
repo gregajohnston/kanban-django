@@ -1,9 +1,10 @@
+from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from .models import Task
-from .serializers import TaskSerializer
+from .serializers import TaskSerializer, UserSerializer, GroupSerializer
 
 
-class TasksViewSet(viewsets.ModelViewSet):
+class TaskViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows tasks to be viewed or edited.
     """
@@ -11,9 +12,17 @@ class TasksViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
 
 
-class TaskViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows tasks to be viewed or edited.
+    API endpoint that allows users to be viewed or edited.
     """
-    queryset = Task.objects.all().order_by('title')
-    serializer_class = TaskSerializer
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
