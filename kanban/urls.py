@@ -20,8 +20,9 @@ from django.contrib import admin
 from tasks import views
 
 router = routers.DefaultRouter()
-router.register(r'api/tasks', views.TasksViewSet)
-router.register(r'api/tasks/{id}', views.TasksViewSet)
+# router.register(r'^api', views.TasksViewSet)
+router.register(r'^api/tasks', views.TasksViewSet)
+router.register(r'^api/tasks/(?P<id>[0-9]+)', views.TaskViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
