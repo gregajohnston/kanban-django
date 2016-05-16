@@ -15,18 +15,20 @@ Including another URLconf
 """
 
 from django.conf.urls import url, include
-from rest_framework import routers
-from tasks import views
+from django.contrib.auth import views as auth_views
+from rest_framework.routers import DefaultRouter
+from tasks.views import TaskViewSet, UserViewSet, GroupViewSet
 
-router = routers.DefaultRouter()
-router.register(r'api/tasks', views.TaskViewSet)
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+router = DefaultRouter()
+router.register(r'api/tasks', TaskViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'groups', GroupViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include(
-            'rest_framework.urls', namespace='rest_framework'))
+            'rest_framework.urls', namespace='rest_framework')),
+    url(r'^accounts/login/', auth_views.login),
 ]

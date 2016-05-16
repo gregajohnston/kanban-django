@@ -43,8 +43,8 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'PAGE_SIZE': 10
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser', ),
+    'PAGE_SIZE': 10,
 }
 
 MIDDLEWARE_CLASSES = [
@@ -88,18 +88,15 @@ DATABASES = HIDDEN_DATABASES
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME':
+        'django.contrib.auth.password_validation.' +
+        'UserAttributeSimilarityValidator', },
+    {'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    {'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    {'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
 
 

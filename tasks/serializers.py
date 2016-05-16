@@ -4,9 +4,11 @@ from .models import Task
 
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Task
-        fields = ('id', 'title', 'status', 'priority')
+        fields = ('id', 'owner', 'title', 'status', 'priority', )
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
