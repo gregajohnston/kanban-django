@@ -1,22 +1,28 @@
 var $tasks = $('#tasks');
+
+$.get('http://localhost:8000/api/tasks/', function(tasks){
+    if (tasks.results != undefined) {
+        tasks.results.forEach(for_function);
+    }
+})
+
+function for_function(task) {
+        console.log(task);
+        var $li = $('<li>');
+        $li.text(task.title);
+        $li.appendTo($tasks);
+}
+
+var $task = $('#task');
 var $title = $('input[name="title"]');
 var $status = $('input[name="status"]');
 var $priority = $('input[name="priority"]');
-
-
-$.get('http://localhost:8000/api/tasks/', function(tasks){
-  abilities.results.forEach(function(task) {
-    console.log(task)
-    var $li = $('<li>');
-    $li.text(task.title)
-    $li.appendTo($tasks);
-  })
-})
 
 $task.submit(function() {
   console.log('Form submitted!');
 
   $.ajax({
+    {% csrf_token %}
     method: 'post',
     url: 'http://localhost:8000/api/tasks/',
     username: 'admin',
