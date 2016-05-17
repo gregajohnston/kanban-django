@@ -10,6 +10,7 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         model = Task
         fields = ('id', 'owner', 'title',
                   'description', 'status', 'priority', )
+        read_only_fields = ('id', 'owner')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
