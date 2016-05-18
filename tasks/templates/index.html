@@ -1,17 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
+        <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"></link> -->
         <meta charset="utf-8">
         <title>TO DO</title>
-
     </head>
     <body>
         <label for="username">Username:</b></label>
-        <input
+        <input id='usernametext' type="text" name="username" value=""><br>
         <label for="password">Password:</b></label>
-
+        <input id='passwordtext' type="Password" name="password" value=""><br>
         <label for="login">Login</b></label>
+        <input id="button" type="submit" value="Login">
 
-
+    <!-- <script src="js/jquery-2.2.3.js"></script>
+    <script src="js/main.js"></script> -->
     </body>
 </html>
