@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'kanban.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = HIDDEN_DATABASES
+# DATABASES = HIDDEN_DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
