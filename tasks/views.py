@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework.response import Response
+from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Task
 from .serializers import TaskSerializer, UserSerializer, GroupSerializer
@@ -36,3 +37,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+def index(request):
+    if request.user.is_admin():
+        tasks = Task.objects.all()
+    else:
+        tasks = Task.objects.filter(user=request.user)
+
+    context = {'tasks': tasks}
+    return render(request, 'rest_framework/tasks.html', context)

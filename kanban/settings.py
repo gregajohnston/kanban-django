@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
-# from .secrets import HIDDEN_SECRET_KEY , HIDDEN_DATABASES
+# from .secrets import HIDDEN_SECRET_KEY, HIDDEN_DATABASES
 
+
+# SECRET_KEY = HIDDEN_SECRET_KEY
 SECRET_KEY = 'f5q^v0^r+95fzi6082i=v^n&q_$zjogxvei*8^!tz(u1%6#p!$'
 
 DATABASES = {'default': {}}
@@ -90,7 +92,7 @@ WSGI_APPLICATION = 'kanban.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = HIDDEN_DATABASES
+DATABASES = HIDDEN_DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

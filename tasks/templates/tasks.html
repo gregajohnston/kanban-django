@@ -26,8 +26,6 @@
   </head>
   <body>
 
-
-
     <ul id='tasks'>
         <li>
             <form id="task" action="" method="post">{% csrf_token %}
@@ -54,13 +52,3 @@
     <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div> -->
   </body>
 </html>
-
-
-<!-- {% block body %}
-    <h2>TO DO</h2>
-    {% for x in tasks %}
-        <p>{{ x.name }} - {{ x.created|date:"D d M Y" }}</p>
-        <p>{{ x.description }}</p>
-        <hr />
-    {% endfor %}
-{% endblock %} -->
