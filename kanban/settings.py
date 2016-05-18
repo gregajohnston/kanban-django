@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import dj_database_url
+
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 # from .secrets import HIDDEN_SECRET_KEY, HIDDEN_DATABASES
 
@@ -21,7 +28,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES = HIDDEN_DATABASES
 
 # SECRET_KEY = HIDDEN_SECRET_KEY
-SECRET_KEY = 'f5q^v0^r+95fzi6082i=v^n&q_$zjogxvei*8^!tz(u1%6#p!$'
+SECRET_KEY = os.environ.get("KANBAN_SECRET_KEY")
 
 DATABASES = {'default': {}}
 DATABASES['default'].update(db_from_env)
