@@ -1,6 +1,6 @@
 var $tasks = $('#tasks');
 
-$.get('http://localhost:8000/api/tasks/', function(tasks){
+$.get('/api/tasks/', function(tasks){
     if (tasks.results != undefined) {
         tasks.results.forEach(for_function);
     }
@@ -24,7 +24,7 @@ $task.submit(function() {
   $.ajax({
     {% csrf_token %}
     method: 'post',
-    url: 'http://localhost:8000/api/tasks/',
+    url: '/api/tasks/',
     username: 'admin',
     password: 'password123',
     data: {

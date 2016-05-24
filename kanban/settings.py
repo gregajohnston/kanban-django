@@ -13,26 +13,15 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 
-from os.path import join, dirname
-from dotenv import load_dotenv
-
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-# from .secrets import HIDDEN_SECRET_KEY, HIDDEN_DATABASES
+# SECRET_KEY = HIDDEN_SECRET_KEY
+SECRET_KEY = os.environ.get('KANBAN_SECRET_KEY')
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-# DATABASES = HIDDEN_DATABASES
-
-# SECRET_KEY = HIDDEN_SECRET_KEY
-SECRET_KEY = os.environ.get("KANBAN_SECRET_KEY")
-
+path_url = os.environ.get('KANBAN_DATABASE_URL')
+db_from_env = dj_database_url.config(default=path_url, conn_max_age=500)
 DATABASES = {'default': {}}
 DATABASES['default'].update(db_from_env)
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
